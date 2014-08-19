@@ -2,27 +2,38 @@ module.exports = function(grunt) {
 	'use strict';
 	grunt
 			.initConfig({
+				typescript : {
+					base : {
+						src : [ 'WebContent/script/src/ts/*.ts' ],
+						// dest : 'script/js/<%= pkg.name %>.js',
+						dest : 'WebContent/script/dest/cat.js',
+						options : {
+							sourceMap : true,
+						}
+					}
+				},
+
 				pkg : grunt.file.readJSON('package.json'),
 
 				concat : {
 					dist : {
-						src : [ 'js/src/test1.js', 'js/src/test2.js',
-								'js/src/test3.js', 'js/src/test4.js', ],
-						dest : 'WebContent/scripts/<%= pkg.name %>.js'
+						src : [ 'WebContent/script/src/js/*.js',
+								'WebContent/script/dest/cat.js', ],
+						dest : 'WebContent/script/dest/main.js'
 					}
 				},
-
 				uglify : {
 					options : {
 						banner : '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
 					},
 					build : {
-						src : 'WebContent/scripts/<%= pkg.name %>.js',
-						dest : 'WebContent/scripts/<%= pkg.name %>.min.js'
-					}
+						src : 'WebContent/script/dest/main.js',
+						dest : 'WebContent/script/dest/main.min.js'
+					},
 				},
 				watch : {
-					files : [ 'js/src/*.js' ],
+					files : [ 'WebContent/script/src/ts/*.ts',
+							'WebContent/script/src/js/*.js' ],
 					tasks : [ 'concat', 'uglify' ]
 				}
 			});
@@ -30,6 +41,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-watch');
-	grunt.registerTask('build', [ 'concat', 'uglify' ]);
+	grunt.loadNpmTasks('grunt-typescript');
+	grunt.registerTask('build', [ 'typescript', 'concat', 'uglify' ]);
 
 };

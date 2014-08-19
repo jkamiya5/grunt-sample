@@ -5,5 +5,5 @@ function koshin() {
 		document.write("テスト:" + i + ":　　");
 		document.write(hiduke);
 	}
-	alert("bbbbbbbccdddaaaaaaaaaaaccccccccccccdddddddddddd");
+	alert("bbbbbあああああああああああああdddddd");
 }
