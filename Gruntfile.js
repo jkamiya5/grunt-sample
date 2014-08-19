@@ -2,6 +2,7 @@ module.exports = function(grunt) {
 	'use strict';
 	grunt
 			.initConfig({
+
 				typescript : {
 					base : {
 						src : [ 'WebContent/script/src/ts/*.ts' ],
@@ -35,13 +36,22 @@ module.exports = function(grunt) {
 					files : [ 'WebContent/script/src/ts/*.ts',
 							'WebContent/script/src/js/*.js' ],
 					tasks : [ 'concat', 'uglify' ]
-				}
+				},
+				// 不要なファイルを削除する
+				clean : {
+					// releaseから不要なファイルを削除する
+					deleteReleaseFile : {
+						src : [ 'WebContent/script/dest/cat.js' ],
+					}
+				},
+
 			});
 
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-typescript');
-	grunt.registerTask('build', [ 'typescript', 'concat', 'uglify' ]);
+	grunt.loadNpmTasks('grunt-contrib-clean');
+	grunt.registerTask('build', [ 'typescript', 'concat', 'uglify', 'clean' ]);
 
 };
