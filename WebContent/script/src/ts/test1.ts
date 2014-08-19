@@ -3,6 +3,10 @@ module TEST {
     class Cat {              // ‚±‚±‚©‚ç’Ç‰Á
         age: number;
         weight: number;
+        constructor(age: number, weight: number) {
+            this.age = age;
+            this.weight = weight;
+        }
     }
     var myCat = new Cat();
     myCat.age = 3;
