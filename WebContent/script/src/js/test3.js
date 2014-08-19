@@ -6,4 +6,5 @@ function koshin() {
 		document.write(hiduke);
 	}
 	alert("bbbbbあああああああああああああdddddd");
+
 }

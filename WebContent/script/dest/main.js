@@ -9,6 +9,7 @@ function koshin() {
 		document.write(hiduke);
 	}
 	alert("bbbbbあああああああああああああdddddd");
+
 }
 // パターン1の色設定開始
 function color1() {
@@ -34,9 +35,9 @@ function color2() {
 }
 // パターン2の色設定終了
 
-var test1;
-(function (test1) {
-    test1.Message;
+var TEST;
+(function (TEST) {
+    TEST.Message;
     var Cat = (function () {
         function Cat() {
         }
@@ -45,7 +46,11 @@ var test1;
     var myCat = new Cat();
     myCat.age = 3;
     myCat.weight = 5.1;
-    test1.Message = "My cat is " + myCat.age + "yeas old and weight is " + myCat.weight + " kg. ";
-})(test1 || (test1 = {}));
-document.write(test1.Message);
+    TEST.Message = "My cat is " + myCat.age + "yeas old and weight is " + myCat.weight + " kg. ";
+})(TEST || (TEST = {}));
+document.write(TEST.Message);
+
+function test1() {
+    document.write(TEST.Message);
+}
 //# sourceMappingURL=cat.js.map
